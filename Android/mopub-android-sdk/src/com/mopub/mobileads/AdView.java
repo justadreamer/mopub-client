@@ -668,10 +668,10 @@ public class AdView extends WebView {
     }
 
     protected void trackImpression() {
-        if (mImpressionUrl == null) return;
-        
         new Thread(new Runnable() {
             public void run () {
+                if (mImpressionUrl == null) return;
+                
                 DefaultHttpClient httpclient = new DefaultHttpClient();
                 try {
                     HttpGet httpget = new HttpGet(mImpressionUrl);
@@ -691,10 +691,10 @@ public class AdView extends WebView {
     }
     
     protected void registerClick() {
-        if (mClickthroughUrl == null) return;
-
         new Thread(new Runnable() {
             public void run () {
+                if (mClickthroughUrl == null) return;
+                
                 DefaultHttpClient httpclient = new DefaultHttpClient();
                 HttpGet httpget = new HttpGet(mClickthroughUrl);
                 httpget.addHeader("User-Agent", mUserAgent);
