@@ -90,15 +90,12 @@
 - (void)interstitialCustomEventWillAppear:(MPInterstitialCustomEvent *)customEvent
 {
     [self.manager interstitialWillAppearForAdapter:self];
-}
-
-- (void)interstitialCustomEventWillDisappear:(MPInterstitialCustomEvent *)customEvent
-{
-    [self.manager interstitialWillDisappearForAdapter:self];
+    [self.manager interstitialDidAppearForAdapter:self];
 }
 
 - (void)interstitialCustomEventDidDisappear:(MPInterstitialCustomEvent *)customEvent
 {
+    [self.manager interstitialWillDisappearForAdapter:self];
     [self.manager interstitialDidDisappearForAdapter:self];
 }
 
