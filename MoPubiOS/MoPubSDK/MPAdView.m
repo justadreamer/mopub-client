@@ -38,7 +38,7 @@ static NSString * const kNewContentViewKey = @"NewContentView";
 @synthesize location = _location;
 @synthesize adManager = _adManager;
 @synthesize adUnitId = _adUnitId;
-@synthesize keywords;
+@synthesize keywords = _keywords;
 @synthesize delegate = _delegate;
 @synthesize adContentView = _adContentView;
 @synthesize creativeSize = _creativeSize;
@@ -50,6 +50,7 @@ static NSString * const kNewContentViewKey = @"NewContentView";
 @synthesize animationType = _animationType;
 @synthesize ignoresAutorefresh = _ignoresAutorefresh;
 @synthesize testing = _testing;
+@synthesize zip = _zip;
 
 #pragma mark -
 #pragma mark Lifecycle
@@ -101,6 +102,9 @@ static NSString * const kNewContentViewKey = @"NewContentView";
     
 	[_location release];
 	[_locationDescriptionPair release];
+
+    [_keywords release], _keywords = nil;
+    [_zip release], _zip = nil;
     [super dealloc];
 }
 

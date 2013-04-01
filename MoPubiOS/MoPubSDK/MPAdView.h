@@ -81,12 +81,18 @@ typedef enum
 	// Whether the ad view ignores autorefresh values sent down from the server. If YES,
 	// the ad view will never refresh once it has an ad.
 	BOOL _ignoresAutorefresh;
+
+    // Coma-separated list of keywords, some ad network adapters (like Millenial) might use for
+    // better ad targeting
+    NSString* _keywords;
+    
+    // Some ad network adapters (like Millenial) might use the zip code for better targeting
+    NSString* _zip;
 }
 
 @property (nonatomic, assign) id<MPAdViewDelegate> delegate;
 @property (nonatomic, copy) NSString *adUnitId;
 @property (nonatomic, copy) CLLocation *location;
-@property (nonatomic, retain) NSString *keywords;
 @property (nonatomic, assign) CGSize creativeSize;
 @property (nonatomic, assign) BOOL scrollable;
 @property (nonatomic, assign) BOOL locationEnabled;
@@ -96,6 +102,8 @@ typedef enum
 @property (nonatomic, assign, getter = isTesting) BOOL testing;
 @property (nonatomic, retain) UIView *adContentView;
 @property (nonatomic, assign) CGSize originalSize;
+@property (nonatomic, retain) NSString *keywords;
+@property (nonatomic, retain) NSString* zip;
 
 /*
  * Returns an MPAdView with the given ad unit ID.

@@ -104,13 +104,20 @@
 {
 	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 								   @"mopubsdk", @"vendor", nil];
-	
-	NSArray *locationPair = [[self.delegate adView] locationDescriptionPair];
-	if ([locationPair count] == 2) {
-		[params setObject:[locationPair objectAtIndex:0] forKey:@"lat"];
-		[params setObject:[locationPair objectAtIndex:1] forKey:@"lon"];
-	}
-	
+
+    MPAdView* adView = [self.delegate adView];
+    if (adView) {
+        NSString* keywords = adView.keywords;
+        if (keywords) {
+            [params setObject:keywords forKey:@"keywords"];
+        }
+        
+        NSString* zip = adView.zip;
+        if (zip) {
+            [params setObject:zip forKey:@"zip"];
+        }
+    }
+
 	return params;
 }
 
